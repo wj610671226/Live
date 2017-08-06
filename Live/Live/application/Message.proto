@@ -1,0 +1,22 @@
+
+syntax = "proto2";
+
+message UserInfo {
+    required string name = 1;
+    required string iconUrl = 2;
+    required int64 level = 3;
+}
+
+message ChatMessage {
+    required UserInfo userInfo = 1;
+    required string name = 2;
+}
+
+message GiftMessage { 
+    required UserInfo userInfo = 1;
+    required string name = 2;
+    required string imgUrl = 3;
+    required int64 imgCount = 4;
+}
+
+

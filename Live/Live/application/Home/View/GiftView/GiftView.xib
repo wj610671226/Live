@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GiftView" customModule="Live" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额：1000金币" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ce-Zq-Co7">
+                    <rect key="frame" x="10" y="210" width="90" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZQ-MR-QDV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                </view>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meH-a9-XzO">
+                    <rect key="frame" x="315" y="210" width="50" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="uRO-s0-C4r"/>
+                        <constraint firstAttribute="width" secondItem="meH-a9-XzO" secondAttribute="height" multiplier="5:3" id="z3f-yZ-KyS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="赠送">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="clickSendGift:" destination="iN0-l3-epB" eventType="touchDown" id="B0L-M9-bgn"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="7ce-Zq-Co7" firstAttribute="height" secondItem="meH-a9-XzO" secondAttribute="height" id="Ikv-gA-TLV"/>
+                <constraint firstAttribute="bottom" secondItem="meH-a9-XzO" secondAttribute="bottom" constant="10" id="JUI-Xl-7lT"/>
+                <constraint firstItem="7ce-Zq-Co7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="K8s-c8-L5A"/>
+                <constraint firstAttribute="bottom" secondItem="7ce-Zq-Co7" secondAttribute="bottom" constant="10" id="Sfw-EO-goD"/>
+                <constraint firstAttribute="bottom" secondItem="dZQ-MR-QDV" secondAttribute="bottom" constant="50" id="crb-ho-9Cj"/>
+                <constraint firstAttribute="trailing" secondItem="dZQ-MR-QDV" secondAttribute="trailing" id="hos-f9-EfU"/>
+                <constraint firstItem="dZQ-MR-QDV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ixd-mO-1gs"/>
+                <constraint firstAttribute="trailing" secondItem="meH-a9-XzO" secondAttribute="trailing" constant="10" id="j1m-8W-XLo"/>
+                <constraint firstItem="dZQ-MR-QDV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oid-I7-Vz7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="balanceLabel" destination="7ce-Zq-Co7" id="HcO-mC-8Cy"/>
+                <outlet property="giftView" destination="dZQ-MR-QDV" id="vuF-3a-sgO"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="124"/>
+        </view>
+    </objects>
+</document>
