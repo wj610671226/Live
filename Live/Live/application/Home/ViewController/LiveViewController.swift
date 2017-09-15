@@ -17,7 +17,7 @@ class LiveViewController: UIViewController, EmitterProtocol {
     fileprivate lazy var infoView: MessageInfoView = MessageInfoView.loadNibNamed("MessageInfoView")
     fileprivate lazy var giftContentView = GiftContentView(frame: CGRect(x: 0, y: 100, width: 260, height: 80))
     
-    fileprivate lazy var socket: Socket = Socket("192.168.0.100", 8989)
+    fileprivate lazy var socket: Socket = Socket("192.168.2.10", 8989)
     fileprivate lazy var timer: Timer = Timer(fireAt: Date(), interval: 10, target: self, selector: #selector(LiveViewController.sendHeartbeat), userInfo: nil, repeats: true)
     
     var model: WaterFallModel?
@@ -97,15 +97,15 @@ class LiveViewController: UIViewController, EmitterProtocol {
     
     private func initSocket() {
         // 连接socket
-        if socket.connect() {
-            socket.delegate = self
-            RunLoop.main.add(timer, forMode: .commonModes)
-            socket.reciveServerData()
-            
-            socket.joinRoom()
-        } else {
+        
+        guard socket.connect(5) else {
             print("socket连接失败")
+            return
         }
+
+        socket.delegate = self
+        RunLoop.main.add(timer, forMode: .commonModes)
+        socket.joinRoom()
     }
     
     private func createEmitterLayer(_ sender: UIButton) {
@@ -135,7 +135,6 @@ class LiveViewController: UIViewController, EmitterProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -251,31 +250,31 @@ extension LiveViewController: SocketDelegate, AttributedProtocol {
     }
     
     func sendgiftMessage(giftMessage: GiftMessage) {
-        
-        guard let giftname = giftMessage.name else { return }
-        
-        let pattern = "\\(.*?\\)"
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let result = regex.matches(in: giftMessage.name, options: [], range: NSRange(location: 0, length: giftMessage.name.characters.count))
-        
-        var giftName: String = giftname
-        if result.count > 0 {
-            giftName = (giftMessage.name as NSString).replacingCharacters(in: result.first!.range, with: "")
-        }
-        
-        // 显示到礼物窗口
-        let model = GiftContentModel()
-        model.name = giftMessage.userInfo.name
-        model.giftName = giftName
-        model.giftUrl = giftMessage.imgUrl
-        giftContentView.sendGift(model: model)
-        
-        
         // 显示到信息窗口
         DispatchQueue.global().async {
+            
+            guard let giftname = giftMessage.name else { return }
+            
+            let pattern = "\\(.*?\\)"
+            let regex = try! NSRegularExpression(pattern: pattern, options: [])
+            let result = regex.matches(in: giftMessage.name, options: [], range: NSRange(location: 0, length: giftMessage.name.characters.count))
+            
+            var giftName: String = giftname
+            if result.count > 0 {
+                giftName = (giftMessage.name as NSString).replacingCharacters(in: result.first!.range, with: "")
+            }
+            
+            // 显示到礼物窗口
+            let model = GiftContentModel()
+            model.name = giftMessage.userInfo.name
+            model.giftName = giftName
+            model.giftUrl = giftMessage.imgUrl
+            
             let attr = self.createGiftAttributeString(giftMessage.userInfo.name!, giftName, giftMessage.imgUrl)
+            
             DispatchQueue.main.async {
-                self.infoView.insertMessage(attr)
+                self.giftContentView.sendGift(model: model)
+//                self.infoView.insertMessage(attr)
             }
         }
         

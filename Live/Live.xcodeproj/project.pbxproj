@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0039E401F6BBC130040D104 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0039E3F1F6BBC130040D104 /* IJKMediaFramework.framework */; };
 		A00C02131F0CCF1C00641DE3 /* Message.proto in Resources */ = {isa = PBXBuildFile; fileRef = A00C020A1F0CCF1C00641DE3 /* Message.proto */; };
 		A00C02141F0CCF1C00641DE3 /* Message.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C020B1F0CCF1C00641DE3 /* Message.proto.swift */; };
 		A00C02151F0CCF1C00641DE3 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00C020C1F0CCF1C00641DE3 /* Socket.swift */; };
@@ -42,7 +43,6 @@
 		A03E95581EF52FC900438FB6 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03E95571EF52FC900438FB6 /* Mine.storyboard */; };
 		A03E955A1EF52FD200438FB6 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03E95591EF52FD200438FB6 /* Ranking.storyboard */; };
 		A03E955C1EF52FE500438FB6 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03E955B1EF52FE500438FB6 /* Discover.storyboard */; };
-		A0589D571F37438E0055D305 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0589D561F37438E0055D305 /* IJKMediaFramework.framework */; };
 		A09107B21F029AB900306A4B /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09107B01F029AB900306A4B /* LiveViewController.swift */; };
 		A09107B31F029AB900306A4B /* LiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A09107B11F029AB900306A4B /* LiveViewController.xib */; };
 		A09107B51F02A7D900306A4B /* PageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09107B41F02A7D900306A4B /* PageCollectionView.swift */; };
@@ -85,6 +85,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0039E3F1F6BBC130040D104 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		A00C020A1F0CCF1C00641DE3 /* Message.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Message.proto; sourceTree = "<group>"; };
 		A00C020B1F0CCF1C00641DE3 /* Message.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.proto.swift; sourceTree = "<group>"; };
 		A00C020C1F0CCF1C00641DE3 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		A03E95571EF52FC900438FB6 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		A03E95591EF52FD200438FB6 /* Ranking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Ranking.storyboard; sourceTree = "<group>"; };
 		A03E955B1EF52FE500438FB6 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
-		A0589D561F37438E0055D305 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		A09107B01F029AB900306A4B /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		A09107B11F029AB900306A4B /* LiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveViewController.xib; sourceTree = "<group>"; };
 		A09107B41F02A7D900306A4B /* PageCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCollectionView.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				A031B35A1F16347E00047575 /* libc++.tbd in Frameworks */,
 				A031B3581F16347300047575 /* libz.tbd in Frameworks */,
 				C45E57A906327104C4AA1F3F /* Pods_Live.framework in Frameworks */,
-				A0589D571F37438E0055D305 /* IJKMediaFramework.framework in Frameworks */,
+				A0039E401F6BBC130040D104 /* IJKMediaFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 		64A114A3DA96A6270A1A7887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0589D561F37438E0055D305 /* IJKMediaFramework.framework */,
+				A0039E3F1F6BBC130040D104 /* IJKMediaFramework.framework */,
 				A031B3591F16347E00047575 /* libc++.tbd */,
 				A031B3571F16347300047575 /* libz.tbd */,
 				CF05A526D9FF0D4492034F5A /* Pods_Live.framework */,
@@ -801,6 +801,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -820,7 +821,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -851,6 +852,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -864,7 +866,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -877,6 +879,7 @@
 			baseConfigurationReference = CE99C66DD9C065E7559B59F7 /* Pods-Live.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8CZ3DF5ZCN;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -898,6 +901,7 @@
 			baseConfigurationReference = AEA8FD21C6ECE276A300B172 /* Pods-Live.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8CZ3DF5ZCN;
 				FRAMEWORK_SEARCH_PATHS = (

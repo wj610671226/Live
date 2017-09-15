@@ -11,6 +11,7 @@ import UIKit
 class Socket {
     weak var delegate: SocketDelegate?
     fileprivate var tcpClient: TCPClient
+    fileprivate var isConnect = false
     
     fileprivate lazy var userInfo: UserInfo = {
         let builder = UserInfo.Builder()
@@ -26,8 +27,14 @@ class Socket {
 
 
 extension Socket {
-    func connect() -> Bool{
-        return tcpClient.connect(timeout: 5).0
+    func connect(_ time: Int) -> Bool{
+        isConnect = tcpClient.connect(timeout: time).0
+        if isConnect {
+            DispatchQueue.global().async {
+                self.reciveServerData()
+            }
+        }
+        return isConnect
     }
     
     func sendMssage(data: Data, type: Int) {
@@ -80,34 +87,32 @@ extension Socket {
     
     // 接收服务器发送的数据
     func reciveServerData() {
-        DispatchQueue.global().async {
-            while true {
-                // data length
-                guard let headerMessage = self.tcpClient.read(4) else {
-                    return
-                }
-                let headerData = Data(bytes: headerMessage, count: 4)
-                var length = 0
-                (headerData as NSData).getBytes(&length, length: 4)
-                
-                // type
-                guard let typeMessage = self.tcpClient.read(2) else {
-                    return
-                }
-                let typeData = Data(bytes: typeMessage, count: 2)
-                var type = 0
-                (typeData as NSData).getBytes(&type, length: 2)
-                
-                // conetent
-                guard let contentMessage = self.tcpClient.read(length) else {
-                    return
-                }
-                
-                let content = Data(bytes: contentMessage, count: length)
-                
-                DispatchQueue.main.async {
-                    self.parseReciverData(type: type, data: content)
-                }
+        while self.isConnect {
+            // data length
+            guard let headerMessage = self.tcpClient.read(4) else {
+                return
+            }
+            let headerData = Data(bytes: headerMessage, count: 4)
+            var length = 0
+            (headerData as NSData).getBytes(&length, length: 4)
+            
+            // type
+            guard let typeMessage = self.tcpClient.read(2) else {
+                return
+            }
+            let typeData = Data(bytes: typeMessage, count: 2)
+            var type = 0
+            (typeData as NSData).getBytes(&type, length: 2)
+            
+            // conetent
+            guard let contentMessage = self.tcpClient.read(length) else {
+                return
+            }
+            
+            let content = Data(bytes: contentMessage, count: length)
+            
+            DispatchQueue.main.async {
+                self.parseReciverData(type: type, data: content)
             }
         }
     }
