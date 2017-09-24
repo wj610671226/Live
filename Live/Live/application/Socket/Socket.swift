@@ -27,7 +27,7 @@ class Socket {
 
 
 extension Socket {
-    func connect(_ time: Int) -> Bool{
+    func connect(_ time: Int) -> Bool {
         isConnect = tcpClient.connect(timeout: time).0
         if isConnect {
             DispatchQueue.global().async {
@@ -82,6 +82,10 @@ extension Socket {
         let heart: String = "sendHeartbeat"
         let data = heart.data(using: .utf8)!
         sendMssage(data: data, type: 100)
+    }
+    
+    func close() {
+        _ = tcpClient.close()
     }
     
     

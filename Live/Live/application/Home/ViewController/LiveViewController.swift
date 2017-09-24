@@ -17,7 +17,7 @@ class LiveViewController: UIViewController, EmitterProtocol {
     fileprivate lazy var infoView: MessageInfoView = MessageInfoView.loadNibNamed("MessageInfoView")
     fileprivate lazy var giftContentView = GiftContentView(frame: CGRect(x: 0, y: 100, width: 260, height: 80))
     
-    fileprivate lazy var socket: Socket = Socket("192.168.2.10", 8989)
+    fileprivate lazy var socket: Socket = Socket("0.0.0.0", 8989)
     fileprivate lazy var timer: Timer = Timer(fireAt: Date(), interval: 10, target: self, selector: #selector(LiveViewController.sendHeartbeat), userInfo: nil, repeats: true)
     
     var model: WaterFallModel?
@@ -27,12 +27,12 @@ class LiveViewController: UIViewController, EmitterProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         initUI()
-        initSocket()
         initLiveView()
+        initSocket()
         
     }
 
@@ -97,14 +97,12 @@ class LiveViewController: UIViewController, EmitterProtocol {
     
     private func initSocket() {
         // 连接socket
-        
-        guard socket.connect(5) else {
+        guard socket.connect(2) else {
             print("socket连接失败")
             return
         }
-
         socket.delegate = self
-        RunLoop.main.add(timer, forMode: .commonModes)
+        RunLoop.current.add(timer, forMode: .commonModes)
         socket.joinRoom()
     }
     
@@ -122,7 +120,6 @@ class LiveViewController: UIViewController, EmitterProtocol {
         chatView.textField.resignFirstResponder()
         UIView.animate(withDuration: 0.25) {
             self.giftView.frame.origin.y = self.view.bounds.height
-            
             self.infoView.frame.origin.y = self.infoY
         }
     }
@@ -135,17 +132,19 @@ class LiveViewController: UIViewController, EmitterProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        socket.levelRoom()
+        ijkPlayer?.shutdown()
+        timer.invalidate()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        socket.levelRoom()
-        ijkPlayer?.shutdown()
+        socket.close()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     deinit {
@@ -204,18 +203,15 @@ extension LiveViewController {
     }
     
     @objc fileprivate func keyboardFrameChange(_ notification: Notification) {
-        
         let timeinterval: TimeInterval = notification.userInfo!["UIKeyboardAnimationDurationUserInfoKey"] as! TimeInterval
         let endframe = notification.userInfo!["UIKeyboardFrameEndUserInfoKey"] as! NSValue
         let endy: CGFloat = endframe.cgRectValue.origin.y
-        
         let chatViewY = (endy == view.bounds.height) ? endy + chatView.frame.size.height : endy - chatView.frame.size.height
-        
         let infoViewY: CGFloat = (endy == view.bounds.height) ? view.bounds.height - infoView.bounds.height - 44 : infoView.frame.origin.y - endframe.cgRectValue.height
+        
         UIView.animate(withDuration: timeinterval) {
             UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: 7)!)
             self.chatView.frame.origin.y = chatViewY
-            
             self.infoView.frame.origin.y = infoViewY
         }
     }
@@ -270,7 +266,7 @@ extension LiveViewController: SocketDelegate, AttributedProtocol {
             model.giftName = giftName
             model.giftUrl = giftMessage.imgUrl
             
-            let attr = self.createGiftAttributeString(giftMessage.userInfo.name!, giftName, giftMessage.imgUrl)
+//            let attr = self.createGiftAttributeString(giftMessage.userInfo.name!, giftName, giftMessage.imgUrl)
             
             DispatchQueue.main.async {
                 self.giftContentView.sendGift(model: model)
