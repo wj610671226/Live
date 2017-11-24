@@ -18,6 +18,7 @@
 import Foundation
 
 public protocol GeneratedMessageProtocol: ProtocolBuffersMessage {
+    associatedtype BuilderType:GeneratedMessageBuilderProtocol
     static func parseFrom(data: Data) throws -> Self
     static func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Self
     static func parseFrom(inputStream:InputStream) throws -> Self
@@ -26,6 +27,7 @@ public protocol GeneratedMessageProtocol: ProtocolBuffersMessage {
     static func parseFrom(codedInputStream:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Self
     subscript(key: String) -> Any? { get }
 }
+
 
 public protocol GeneratedEnum:RawRepresentable, CustomDebugStringConvertible, CustomStringConvertible, Hashable {
     func toString() -> String
@@ -89,28 +91,18 @@ open class GeneratedMessageBuilder:AbstractProtocolBuffersMessageBuilder
         }
         
     }
-    public func checkInitialized() throws
-    {
+    public func checkInitialized() throws {
         let result = internalGetResult
-        
-        guard result.isInitialized() else
-        {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
-        }
+        try result.isInitialized()
     }
     
-    public func checkInitializedParsed() throws
-    {
+    public func checkInitializedParsed() throws {
         let result = internalGetResult
-        guard result.isInitialized() else
-        {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
-        }
+        try result.isInitialized()
     }
     
-    override open func isInitialized() -> Bool
-    {
-        return internalGetResult.isInitialized()
+    override open func isInitialized() throws {
+        try internalGetResult.isInitialized()
     }
     @discardableResult
     override open func merge(unknownField: UnknownFieldSet) throws -> Self

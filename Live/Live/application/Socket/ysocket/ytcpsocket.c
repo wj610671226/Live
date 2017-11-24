@@ -42,6 +42,7 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/select.h>
+#include <sys/time.h>
 void ytcpsocket_set_block(int socket,int on) {
     int flags;
     flags = fcntl(socket,F_GETFL,0);

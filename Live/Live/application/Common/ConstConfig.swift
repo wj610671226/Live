@@ -10,3 +10,4 @@ import UIKit
 
 let KScreenWidth: CGFloat = UIScreen.main.bounds.width
 let KScreenHeight: CGFloat = UIScreen.main.bounds.height
+let IS_IPHONE_X: Bool = KScreenHeight == 812.0 ? true : false

@@ -26,7 +26,7 @@ class GiftViewCell: UICollectionViewCell {
         didSet {
             super.isSelected = isSelected
             if isSelected {
-                giftImageView.kf.setImage(with: URL(string: model!.gUrl), placeholder: UIImage(named: "room_btn_gift"))
+                giftImageView.kf.setImage(with: URL(string: model!.gUrl))
             } else {
                 giftImageView.kf.setImage(with: URL(string: model!.img), placeholder: UIImage(named: "room_btn_gift"))
             }

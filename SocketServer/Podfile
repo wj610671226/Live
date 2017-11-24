@@ -3,5 +3,5 @@
 
 target 'SocketServer' do
   use_frameworks!
-pod 'ProtocolBuffers-Swift', '~> 3.0.16'
+pod 'ProtocolBuffers-Swift', '~> 4.0.1'
 end

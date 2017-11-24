@@ -12,6 +12,8 @@ import LFLiveKit
 
 class MyLiveViewController: UIViewController {
 
+    @IBOutlet weak var stackTop: NSLayoutConstraint!
+    
     fileprivate lazy var session: LFLiveSession = {
         let audioConfiguration = LFLiveAudioConfiguration.default()
         let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: LFLiveVideoQuality.low2, outputImageOrientation: .portrait)
@@ -23,6 +25,8 @@ class MyLiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if IS_IPHONE_X {
+            stackTop.constant = 44 }
     }
     
     @IBAction func startLive(_ sender: UIButton) {
@@ -43,7 +47,7 @@ class MyLiveViewController: UIViewController {
     }
     
     @IBAction func stopLive(_ sender: UIButton) {
-        session.stopLive()
+        if session.running { session.stopLive() }
     }
     
     @IBAction func clickBack(_ sender: UIButton) {

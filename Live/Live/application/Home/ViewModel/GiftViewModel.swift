@@ -20,9 +20,6 @@ class GiftViewModel: NetWorkProtocol {
         
         let param = ["type" : 0, "page" : 1, "rows" : 150]
         request(url, .get, param) { (response) in
-            
-//            print(response)
-            
             guard let result = response as? [String: Any] else { return }
             guard let message = result["message"] as? [String : Any] else { return }
 
@@ -38,7 +35,6 @@ class GiftViewModel: NetWorkProtocol {
                     self.giftData.append(objArray)
                 }
             }
-
             finshedCallBack()
         }
     }

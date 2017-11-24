@@ -5,6 +5,6 @@ target 'Live' do
   use_frameworks!
     pod 'Alamofire', '~> 4.1.0'
     pod 'Kingfisher', '~> 3.2.1'
-    pod 'ProtocolBuffers-Swift', '~> 3.0.16'
+    pod 'ProtocolBuffers-Swift', '~> 4.0.1'
     pod 'LFLiveKit'
 end

@@ -73,6 +73,7 @@
 		A0E7844A1F0DCECC001563F9 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E784481F0DCECC001563F9 /* MessageTableViewCell.swift */; };
 		A0E7844B1F0DCECC001563F9 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E784491F0DCECC001563F9 /* MessageTableViewCell.xib */; };
 		A0E7844D1F0E130A001563F9 /* AttributedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E7844C1F0E130A001563F9 /* AttributedProtocol.swift */; };
+		A0E93A111F777F8900293DB6 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E93A101F777F8900293DB6 /* DiscoverViewController.swift */; };
 		A0EB3E511F1351FD00417039 /* GiftContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB3E4D1F1351FD00417039 /* GiftContentCell.swift */; };
 		A0EB3E521F1351FD00417039 /* GiftContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0EB3E4E1F1351FD00417039 /* GiftContentCell.xib */; };
 		A0EB3E531F1351FD00417039 /* GiftContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EB3E4F1F1351FD00417039 /* GiftContentView.swift */; };
@@ -153,6 +154,7 @@
 		A0E784481F0DCECC001563F9 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		A0E784491F0DCECC001563F9 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		A0E7844C1F0E130A001563F9 /* AttributedProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedProtocol.swift; sourceTree = "<group>"; };
+		A0E93A101F777F8900293DB6 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		A0EB3E4D1F1351FD00417039 /* GiftContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftContentCell.swift; sourceTree = "<group>"; };
 		A0EB3E4E1F1351FD00417039 /* GiftContentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiftContentCell.xib; sourceTree = "<group>"; };
 		A0EB3E4F1F1351FD00417039 /* GiftContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiftContentView.swift; sourceTree = "<group>"; };
@@ -308,31 +310,16 @@
 		A03E953C1EF52F1E00438FB6 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				A03E95411EF52F1E00438FB6 /* Model */,
-				A03E95421EF52F1E00438FB6 /* View */,
 				A03E95431EF52F1E00438FB6 /* ViewController */,
 			);
 			path = Discover;
-			sourceTree = "<group>";
-		};
-		A03E95411EF52F1E00438FB6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A03E95421EF52F1E00438FB6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A03E95431EF52F1E00438FB6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				A03E955B1EF52FE500438FB6 /* Discover.storyboard */,
+				A0E93A101F777F8900293DB6 /* DiscoverViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -390,25 +377,9 @@
 		A03E95481EF52F1E00438FB6 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				A03E95491EF52F1E00438FB6 /* Model */,
-				A03E954A1EF52F1E00438FB6 /* View */,
 				A03E954B1EF52F1E00438FB6 /* ViewController */,
 			);
 			path = Mine;
-			sourceTree = "<group>";
-		};
-		A03E95491EF52F1E00438FB6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A03E954A1EF52F1E00438FB6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A03E954B1EF52F1E00438FB6 /* ViewController */ = {
@@ -423,25 +394,9 @@
 		A03E954C1EF52F1E00438FB6 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				A03E954D1EF52F1E00438FB6 /* Model */,
-				A03E954E1EF52F1E00438FB6 /* View */,
 				A03E954F1EF52F1E00438FB6 /* ViewController */,
 			);
 			path = Ranking;
-			sourceTree = "<group>";
-		};
-		A03E954D1EF52F1E00438FB6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A03E954E1EF52F1E00438FB6 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		A03E954F1EF52F1E00438FB6 /* ViewController */ = {
@@ -749,6 +704,7 @@
 				A0EB3E531F1351FD00417039 /* GiftContentView.swift in Sources */,
 				A00C02151F0CCF1C00641DE3 /* Socket.swift in Sources */,
 				A00C02141F0CCF1C00641DE3 /* Message.proto.swift in Sources */,
+				A0E93A111F777F8900293DB6 /* DiscoverViewController.swift in Sources */,
 				A0EB3E541F1351FD00417039 /* NumberLabel.swift in Sources */,
 				A0FD67D41F1C6A010062784D /* MyLiveViewController.swift in Sources */,
 				A0E7844D1F0E130A001563F9 /* AttributedProtocol.swift in Sources */,

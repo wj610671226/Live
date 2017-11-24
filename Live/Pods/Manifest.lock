@@ -2,20 +2,20 @@ PODS:
   - Alamofire (4.1.0)
   - Kingfisher (3.2.1)
   - LFLiveKit (2.6)
-  - ProtocolBuffers-Swift (3.0.16)
+  - ProtocolBuffers-Swift (4.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.1.0)
   - Kingfisher (~> 3.2.1)
   - LFLiveKit
-  - ProtocolBuffers-Swift (~> 3.0.16)
+  - ProtocolBuffers-Swift (~> 4.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: e266cf991b933498df791e645e0d8ac294492153
   Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
   LFLiveKit: 2219563721f8aa0f188effc3395a06e2d53b23f2
-  ProtocolBuffers-Swift: cba3f101c408355bb2a426c8d14c63cf2de3f567
+  ProtocolBuffers-Swift: d1c0724bbfd1924c219131ff80bdda09352d959c
 
-PODFILE CHECKSUM: bdd81d1718c77311ff7cdba35b3e4b8cdf7b2765
+PODFILE CHECKSUM: e78119f4c38dc81f1ed4c7bda65e0df37519156a
 
 COCOAPODS: 1.2.1

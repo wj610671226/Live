@@ -15,7 +15,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setNavigationBar()
     
         initUI()
@@ -24,6 +23,8 @@ class HomeViewController: UIViewController {
     
     // MARK: - 设置导航栏
     private func setNavigationBar() {
+        
+        title = "首页"
  
         let rightItem = UIBarButtonItem(title: "直播推流", style: .plain, target: self, action: #selector(HomeViewController.clickItem))
         navigationItem.rightBarButtonItem = rightItem
@@ -34,8 +35,12 @@ class HomeViewController: UIViewController {
         searchBar.tintColor = UIColor.white
         let searchFiled = searchBar.value(forKey: "_searchField") as? UITextField
         searchFiled?.textColor = UIColor.white
-        navigationItem.titleView = searchBar
+//        navigationItem.titleView = searchBar
         
+        
+//        let s = UIView.init(frame: CGRect(x: 0, y: 0, width: 200, height: 35))
+//        s.backgroundColor = UIColor.red
+//        navigationItem.titleView = s
     }
 
     
@@ -52,10 +57,10 @@ class HomeViewController: UIViewController {
             viewControllers.append(vc)
         }
         
-        let height = KScreenHeight - 49 - 64
-        let frame = CGRect(x: 0, y: 64, width: KScreenWidth, height: height)
+        let y:CGFloat = IS_IPHONE_X ? 88 : 64
+        let height = KScreenHeight - 49 - y
+        let frame = CGRect(x: 0, y: y, width: KScreenWidth, height: height)
         let pageView = PageView(frame: frame, titles: titles, titleStyle: titleStyle, childVC: viewControllers, parentVC: self)
-        pageView.backgroundColor = UIColor.red
         view.addSubview(pageView)
     }
     
@@ -63,6 +68,7 @@ class HomeViewController: UIViewController {
     func clickItem(sender: UIBarButtonItem) {
         let vc = MyLiveViewController()
         self.present(vc, animated: true, completion: nil)
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     

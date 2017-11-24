@@ -18,6 +18,7 @@ class BaseNavigationViewController: UINavigationController {
         super.viewDidLoad()
         navigationBar.barTintColor = UIColor.black
         navigationBar.tintColor = UIColor.white
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
         // 获取 UIGestureRecognizer 成员属性
 //        var count: UInt32 = 0

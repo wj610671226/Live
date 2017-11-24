@@ -25,11 +25,13 @@ class LiveViewController: UIViewController, EmitterProtocol {
     fileprivate var ijkPlayer : IJKFFMoviePlayerController?
     fileprivate var infoY: CGFloat = 0
     
+    @IBOutlet weak var quitBtnConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChange(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
+        if IS_IPHONE_X { quitBtnConstraint.constant = 25 + 24 }
         initUI()
         initLiveView()
         initSocket()
@@ -132,14 +134,13 @@ class LiveViewController: UIViewController, EmitterProtocol {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        socket.levelRoom()
-        ijkPlayer?.shutdown()
-        timer.invalidate()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        socket.levelRoom()
+        ijkPlayer?.shutdown()
+        timer.invalidate()
         socket.close()
     }
     
