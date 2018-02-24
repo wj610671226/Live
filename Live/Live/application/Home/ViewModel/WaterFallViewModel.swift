@@ -14,22 +14,32 @@ class WaterFallViewModel : NetWorkProtocol {
     private let url: String = "http://qf.56.com/home/v4/moreAnchor.ios"
     
     
-    func loadWaterFallData(_ type: Int, _ index: Int, finshedCallBack: @escaping () -> ()) {
+    func loadWaterFallData(_ type: Int, _ index: Int, _ success: @escaping () -> (),_ failure: @escaping (_ error: String) -> ()) {
         
         let param = ["type" : type, "index" : index, "size" : 48]
-        request(url, .post, param) { (response) in
+        request(url, .post, param, { (response) in
+
             guard let result = response as? [String: Any] else { return }
             guard let message = result["message"] as? [String : Any] else { return }
-            guard let anchors = message["anchors"] as? [Any] else { return }
+            guard let anchors = message["anchors"] as? [Any] else {
+                return
+                
+            }
+
+            if anchors.count == 0 {
+                failure("获取的数据为空")
+                return
+            }
             
             for (index, obj) in anchors.enumerated() {
                 var model = WaterFallModel(obj as! [String : Any])
                 model.isEvenIndex = index % 2 == 0
                 self.data.append(model)
             }
-            finshedCallBack()
             
-//            print(response)
+            success()
+        }) { (error) in
+            failure(error)
         }
     }
 }

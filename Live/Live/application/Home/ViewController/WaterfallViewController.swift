@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import PKHUD
 
 fileprivate let cellID: String = "WaterFallCellID"
 
@@ -101,8 +102,12 @@ extension WaterfallViewController: WaterFallCollectionViewFlowLayoutDatasource {
 // MARK: - 获取数据
 extension WaterfallViewController {
     fileprivate func getDataFromServer() {
-        viewModel.loadWaterFallData(type, index) { 
+        HUD.show(.progress)
+        viewModel.loadWaterFallData(type, index, {
+            HUD.hide()
             self.collectionView.reloadData()
+        }) { (error) in
+            HUD.hide()
         }
     }
 }

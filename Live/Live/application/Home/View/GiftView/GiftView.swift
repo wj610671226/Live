@@ -25,8 +25,10 @@ class GiftView: UIView, LoadNibProtocol {
         super.awakeFromNib()
         
         // 获取数据
-        viewModel.loadGifterData {
+        viewModel.loadGifterData({
             self.collectionView.reloadData()
+        }) { (error) in
+            
         }
         
         initUI()

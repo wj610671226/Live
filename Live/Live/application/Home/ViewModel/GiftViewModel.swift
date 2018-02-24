@@ -16,13 +16,13 @@ class GiftViewModel: NetWorkProtocol {
     
     private let url: String = "http://qf.56.com/pay/v4/giftList.ios"
 
-    func loadGifterData(finshedCallBack: @escaping () -> ()) {
+    func loadGifterData(_ finshedCallBack: @escaping () -> (), _ failure: @escaping (_ error: String) -> ()) {
         
         let param = ["type" : 0, "page" : 1, "rows" : 150]
-        request(url, .get, param) { (response) in
+        request(url, .get, param, { (response) in
             guard let result = response as? [String: Any] else { return }
             guard let message = result["message"] as? [String : Any] else { return }
-
+            
             for item in message {
                 guard let value = item.value as? [String : Any] else { return }
                 guard let list = value["list"] as? [Any]  else { return }
@@ -36,6 +36,8 @@ class GiftViewModel: NetWorkProtocol {
                 }
             }
             finshedCallBack()
+        }) { (error) in
+            failure(error)
         }
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import IJKMediaFramework
+import PKHUD
 
 class LiveViewController: UIViewController, EmitterProtocol {
 
@@ -66,8 +67,12 @@ class LiveViewController: UIViewController, EmitterProtocol {
     
     private func initLiveView() {
         guard let roomid = model?.roomid, let uid = model?.uid else { return }
-        liveViewModel.loadLiveRoomData(roomid, uid) { liveUrl in
+        HUD.show(.progress)
+        liveViewModel.loadLiveRoomData(roomid, uid, finshedCallBack: { (liveUrl) in
             self.displayLiveView(liveUrl)
+        }) { (error) in
+//            print(error)
+            HUD.flash(.labeledError(title: "主播不在线", subtitle: nil), onView: nil, delay: 1.0, completion: nil)
         }
     }
     
@@ -91,6 +96,8 @@ class LiveViewController: UIViewController, EmitterProtocol {
             ijkPlayer?.view.frame = view.bounds
         }
         view.insertSubview(ijkPlayer!.view, at: 0)
+        
+        HUD.hide()
         
         // 4.开始播放
         ijkPlayer?.prepareToPlay()

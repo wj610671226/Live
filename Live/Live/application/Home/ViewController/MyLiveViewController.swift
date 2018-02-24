@@ -25,8 +25,7 @@ class MyLiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if IS_IPHONE_X {
-            stackTop.constant = 44 }
+        if IS_IPHONE_X { stackTop.constant = 44 }
     }
     
     @IBAction func startLive(_ sender: UIButton) {

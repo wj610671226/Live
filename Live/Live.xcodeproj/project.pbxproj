@@ -552,7 +552,7 @@
 				TargetAttributes = {
 					A03E951F1EF5275B00438FB6 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 2ENJM4DBM8;
+						DevelopmentTeam = 8CZ3DF5ZCN;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -837,7 +837,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2ENJM4DBM8;
+				DEVELOPMENT_TEAM = 8CZ3DF5ZCN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -847,8 +847,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jhtwl.Live;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "52f92c04-3f20-436f-b692-3962d1a7a984";
-				PROVISIONING_PROFILE_SPECIFIER = my_development;
+				PROVISIONING_PROFILE = "c1037211-5c30-41a9-ad95-f50e2886c22b";
+				PROVISIONING_PROFILE_SPECIFIER = 2018_development;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
