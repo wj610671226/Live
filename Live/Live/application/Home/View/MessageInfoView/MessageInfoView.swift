@@ -43,8 +43,8 @@ extension MessageInfoView: UITableViewDataSource {
 extension MessageInfoView {
     func insertMessage(_ message: NSAttributedString) {
         data.append(message)
-        infoTableView.reloadData()
         let indexPath = IndexPath(item: data.count - 1, section: 0)
-        infoTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        infoTableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.none)
+        infoTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
 }

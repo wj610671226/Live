@@ -18,7 +18,8 @@ class LiveViewController: UIViewController, EmitterProtocol {
     fileprivate lazy var infoView: MessageInfoView = MessageInfoView.loadNibNamed("MessageInfoView")
     fileprivate lazy var giftContentView = GiftContentView(frame: CGRect(x: 0, y: 100, width: 260, height: 80))
     
-    fileprivate lazy var socket: Socket = Socket("0.0.0.0", 8989)
+//    fileprivate lazy var socket: Socket = Socket("0.0.0.100", 8989)
+     fileprivate lazy var socket: Socket = Socket("192.168.0.100", 8989)
     fileprivate lazy var timer: Timer = Timer(fireAt: Date(), interval: 10, target: self, selector: #selector(LiveViewController.sendHeartbeat), userInfo: nil, repeats: true)
     
     var model: WaterFallModel?
@@ -274,11 +275,11 @@ extension LiveViewController: SocketDelegate, AttributedProtocol {
             model.giftName = giftName
             model.giftUrl = giftMessage.imgUrl
             
-//            let attr = self.createGiftAttributeString(giftMessage.userInfo.name!, giftName, giftMessage.imgUrl)
+            let attr = self.createGiftAttributeString(giftMessage.userInfo.name!, giftName, giftMessage.imgUrl)
             
             DispatchQueue.main.async {
                 self.giftContentView.sendGift(model: model)
-//                self.infoView.insertMessage(attr)
+                self.infoView.insertMessage(attr)
             }
         }
         
