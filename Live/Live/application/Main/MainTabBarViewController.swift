@@ -14,9 +14,9 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.orange
         addChildVC("Home")
-        addChildVC("Ranking")
-        addChildVC("Discover")
-        addChildVC("Mine")
+//        addChildVC("Ranking")
+//        addChildVC("Discover")
+//        addChildVC("Mine")
     }
 
     private func addChildVC(_ storyboardName: String) {

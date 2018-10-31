@@ -30,8 +30,8 @@ class MyLiveViewController: UIViewController {
     
     @IBAction func startLive(_ sender: UIButton) {
         // 判断摄像头是否可以用
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
-        guard status ==  AVAuthorizationStatus.restricted || status == AVAuthorizationStatus.denied else {
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        if status ==  AVAuthorizationStatus.restricted || status == AVAuthorizationStatus.denied {
             let alert = UIAlertController.init(title: "温馨提示", message: "请使用真机或者检查权限", preferredStyle: UIAlertControllerStyle.alert)
             let cancelAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: nil)
             alert.addAction(cancelAction)
@@ -46,7 +46,11 @@ class MyLiveViewController: UIViewController {
     }
     
     @IBAction func stopLive(_ sender: UIButton) {
-        if session.running { session.stopLive() }
+        if session.running {
+            session.stopLive()
+            session.running = false
+            print("已经停止")
+        }
     }
     
     @IBAction func clickBack(_ sender: UIButton) {

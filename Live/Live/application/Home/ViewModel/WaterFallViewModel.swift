@@ -19,6 +19,8 @@ class WaterFallViewModel : NetWorkProtocol {
         let param = ["type" : type, "index" : index, "size" : 48]
         request(url, .post, param, { (response) in
 
+            print(response)
+            
             guard let result = response as? [String: Any] else { return }
             guard let message = result["message"] as? [String : Any] else { return }
             guard let anchors = message["anchors"] as? [Any] else {

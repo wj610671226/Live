@@ -82,7 +82,7 @@ extension PageTitleView {
         if style.isScroll { // 可以滚动
             let size = CGSize(width: CGFloat(MAXFLOAT), height: style.titleViewHeight)
             for item in titles {
-                let width = (item as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: style.titleFont)], context: nil).width
+                let width = (item as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: style.titleFont)], context: nil).width
                 let x = labels.last?.frame.maxX ?? 0
                 let label = UILabel(frame: CGRect(x: x + style.margin, y: 0, width: width, height: style.titleViewHeight))
                 label.text = item
@@ -131,7 +131,7 @@ extension PageTitleView {
         let y: CGFloat = style.titleViewHeight - style.bottomLineHeight
         if style.isScroll { // 滚动
             let size = CGSize(width: CGFloat(MAXFLOAT), height: style.titleViewHeight)
-            width = (titles.first! as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: style.titleFont)], context: nil).width
+            width = (titles.first! as NSString).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [kCTFontAttributeName as NSAttributedStringKey : UIFont.systemFont(ofSize: style.titleFont)], context: nil).width
             x = labels.first?.frame.minX ?? 0
         } else {
             width = KScreenWidth / CGFloat(titles.count)

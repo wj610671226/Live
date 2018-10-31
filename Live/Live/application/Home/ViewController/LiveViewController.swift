@@ -262,7 +262,7 @@ extension LiveViewController: SocketDelegate, AttributedProtocol {
             
             let pattern = "\\(.*?\\)"
             let regex = try! NSRegularExpression(pattern: pattern, options: [])
-            let result = regex.matches(in: giftMessage.name, options: [], range: NSRange(location: 0, length: giftMessage.name.characters.count))
+            let result = regex.matches(in: giftMessage.name, options: [], range: NSRange(location: 0, length: giftMessage.name.count))
             
             var giftName: String = giftname
             if result.count > 0 {

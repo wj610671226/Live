@@ -44,7 +44,7 @@ class ChatView: UIView , LoadNibProtocol{
         }
     }
     
-    func clickChangeKeyBoard(_ sender: UIButton) {
+    @objc func clickChangeKeyBoard(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         let range = textField.selectedTextRange
         textField.resignFirstResponder()
@@ -54,8 +54,8 @@ class ChatView: UIView , LoadNibProtocol{
     }
     
     @IBAction func textFieldChange(_ sender: UITextField) {
-        print(sender.text!.characters.count)
-       sendMessageBtn.isEnabled = sender.text?.characters.count != 0
+        print(sender.text!.count)
+       sendMessageBtn.isEnabled = sender.text?.count != 0
     }
     
     @IBAction func sendChatMessage(_ sender: UIButton) {

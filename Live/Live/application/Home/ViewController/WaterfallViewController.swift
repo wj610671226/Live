@@ -45,6 +45,11 @@ class WaterfallViewController: UIViewController {
         view.addSubview(collectionView)
         
         getDataFromServer()
+        
+        let yyLabel = YYFPSLabel(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        yyLabel.sizeToFit()
+        yyLabel.center = view.center
+        view.addSubview(yyLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,7 +99,8 @@ extension WaterfallViewController: WaterFallCollectionViewFlowLayoutDatasource {
     }
     
     func waterFallLayout(_ layout: WaterFallCollectionViewFlowLayout, _ indexPath: IndexPath) -> CGFloat {
-        return indexPath.item % 2 == 0 ? KScreenWidth * 2 / 3 : KScreenWidth * 0.5
+//        return indexPath.item % 2 == 0 ? KScreenWidth * 0.5 : KScreenWidth * 2 / 3
+        return KScreenWidth * 0.48
     }
 }
 

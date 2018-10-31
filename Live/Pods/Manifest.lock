@@ -1,24 +1,32 @@
 PODS:
-  - Alamofire (4.1.0)
-  - Kingfisher (3.2.1)
+  - Alamofire (4.7.3)
+  - Kingfisher (4.0.1)
   - LFLiveKit (2.6)
   - PKHUD (5.0.0)
   - ProtocolBuffers-Swift (4.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.1.0)
-  - Kingfisher (~> 3.2.1)
-  - LFLiveKit
+  - Alamofire (~> 4.7.3)
+  - Kingfisher (~> 4.0.0)
+  - LFLiveKit (= 2.6)
   - PKHUD (~> 5.0.0)
   - ProtocolBuffers-Swift (~> 4.0.1)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kingfisher
+    - LFLiveKit
+    - PKHUD
+    - ProtocolBuffers-Swift
+
 SPEC CHECKSUMS:
-  Alamofire: e266cf991b933498df791e645e0d8ac294492153
-  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Kingfisher: b771785e9461ed4b8686d40e7145f9e58100cb24
   LFLiveKit: 2219563721f8aa0f188effc3395a06e2d53b23f2
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   ProtocolBuffers-Swift: d1c0724bbfd1924c219131ff80bdda09352d959c
 
-PODFILE CHECKSUM: 622ddf2ea38da66721c9df58870d47e1ba7c2313
+PODFILE CHECKSUM: 9651eb693817ea18f9da1d655daf4bd25ece0944
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

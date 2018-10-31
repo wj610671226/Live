@@ -16,7 +16,7 @@ extension AttributedProtocol {
     func createRoomAttributeString(_ userName: String, _ isJoin: Bool) -> NSAttributedString {
         let sourcesString = "\(userName) " + (isJoin ? "进入房间" : "离开房间")
         let attr = NSMutableAttributedString(string: sourcesString)
-        attr.addAttributes([NSForegroundColorAttributeName: UIColor.orange], range: NSRange(location: 0, length: userName.characters.count))
+        attr.addAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.orange], range: NSRange(location: 0, length: userName.count))
         return attr
     }
     
@@ -26,13 +26,13 @@ extension AttributedProtocol {
         // chatText = "sdsf[笑脸]，sds[开心]"
         
         // 颜色
-        attr.addAttributes([NSForegroundColorAttributeName: UIColor.orange], range: NSRange(location: 0, length: userName.characters.count))
+        attr.addAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey as NSAttributedStringKey: UIColor.orange], range: NSRange(location: 0, length: userName.count))
         // 表情
         let pattern = "\\[.*?\\]"
         
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return attr}
         
-        let result = regex.matches(in: sourcesString, options: [], range: NSRange(location: 0, length: sourcesString.characters.count))
+        let result = regex.matches(in: sourcesString, options: [], range: NSRange(location: 0, length: sourcesString.count))
         
         for index in (0..<result.count).reversed() {
             let range = result[index].range
@@ -58,11 +58,11 @@ extension AttributedProtocol {
         let attr = NSMutableAttributedString(string: sourcesString)
         
         // 用户姓名颜色
-        attr.addAttributes([NSForegroundColorAttributeName: UIColor.orange], range: NSRange(location: 0, length: userName.characters.count))
+        attr.addAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey : UIColor.orange], range: NSRange(location: 0, length: userName.count))
         
         // 礼物名称
         let giftNameRange = (sourcesString as NSString).range(of: giftName)
-        attr.addAttributes([NSForegroundColorAttributeName: UIColor.red], range: giftNameRange)
+        attr.addAttributes([kCTForegroundColorAttributeName as NSAttributedStringKey: UIColor.red], range: giftNameRange)
         
         // 图片
         guard let image = KingfisherManager.shared.cache.retrieveImageInMemoryCache(forKey: giftUrl) else {

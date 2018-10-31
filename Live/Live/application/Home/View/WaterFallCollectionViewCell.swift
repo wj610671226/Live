@@ -23,7 +23,9 @@ class WaterFallCollectionViewCell: UICollectionViewCell {
             nameLabel.text = model?.name
             let number = model?.focus ?? 0
             numberLabel.text = String(describing: number)
-            headerimageView.kf.setImage(with: URL(string: model!.isEvenIndex ? model!.pic74 : model!.pic51), placeholder: UIImage(named: "home_pic_default"))
+//            headerimageView.kf.setImage(with: URL(string: model!.isEvenIndex ? model!.pic74 : model!.pic51), placeholder: UIImage(named: "home_pic_default"))
+            
+            headerimageView.kf.setImage(with: URL(string: model!.pic74), placeholder: UIImage(named: "home_pic_default"))
         }
     }
     

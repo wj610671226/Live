@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    func clickItem(sender: UIBarButtonItem) {
+    @objc func clickItem(sender: UIBarButtonItem) {
         let vc = MyLiveViewController()
         self.present(vc, animated: true, completion: nil)
 //        navigationController?.pushViewController(vc, animated: true)
